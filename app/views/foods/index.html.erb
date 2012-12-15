@@ -1,0 +1,24 @@
+<h1>所有食物</h1>
+
+<table class="table">
+  <tr>
+    <th>名字</th>
+    <th>描述</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @foods.each do |food| %>
+  <tr>
+    <td><%= link_to food.name, food %></td>
+    <td><%= food.description %></td>
+    <td><%= link_to 'Edit', edit_food_path(food) if user_signed_in?  %></td>
+    <td><%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } if user_signed_in? %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Food', new_food_path, :class => 'btn' %>
